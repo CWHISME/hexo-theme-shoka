@@ -132,6 +132,8 @@ widgets:
   random_posts: true
   # if true, will show recent comments
   recent_comments: true
+  # recent count limit
+  count: 3
 
 footer:
   # Specify the date when the site was setup. If not defined, current year will be used.

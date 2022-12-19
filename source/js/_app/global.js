@@ -196,7 +196,10 @@ const scrollHandle = function (event) {
   siteNav.toggleClass('show', SHOW);
   toolBtn.toggleClass('affix', startScroll);
   siteBrand.toggleClass('affix', startScroll);
-  sideBar.toggleClass('affix', window.pageYOffset > headerHight && document.body.offsetWidth > 991);
+  //如果滚动高度超过整个页面的头部，那就显示底部区域，否则隐藏(实际上元素只是看不见而已，东西还是在原地的)
+  // sideBar.toggleClass('affix', window.pageYOffset > headerHight && document.body.offsetWidth > 991);
+  //所以不清楚具体用来处理啥，但是在我这儿确实有问题，改一下减小该值判断
+  sideBar.toggleClass('affix', window.pageYOffset > headerHightInner && document.body.offsetWidth > 991);
 
   if (typeof scrollAction.y == 'undefined') {
     scrollAction.y = window.pageYOffset;

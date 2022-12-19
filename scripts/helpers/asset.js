@@ -61,6 +61,18 @@ hexo.extend.helper.register('_vendor_js', () => {
   return vendorJs ? htmlTag('script', { src: `//cdn.jsdelivr.net/combine/${vendorJs}` }, '') : '';
 });
 
+hexo.extend.helper.register('_custom_js', () => {
+  const customJs = hexo.theme.config.customJs;
+
+  if (!customJs) return '';
+  let str='';
+  for(let i in customJs)
+  {
+    str+= htmlTag('script', { src:  customJs[i] },'');
+  }
+  return str;
+});
+
 hexo.extend.helper.register('_css', function(...urls) {
   const { statics, css } = hexo.theme.config;
 

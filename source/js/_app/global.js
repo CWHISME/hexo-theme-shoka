@@ -183,8 +183,9 @@ const resizeHandle = function (event) {
 const scrollHandle = function (event) {
   var winHeight = window.innerHeight;
   var docHeight = getDocHeight();
-  var contentVisibilityHeight = docHeight > winHeight ? docHeight - winHeight : document.body.scrollHeight - winHeight;
-  var SHOW = window.pageYOffset > headerHightInner;
+  // var contentVisibilityHeight = docHeight > winHeight ? docHeight - winHeight : document.body.scrollHeight - winHeight;
+  var contentVisibilityHeight = document.body.scrollHeight - winHeight;
+  var SHOW = window.pageYOffset > headerHightInner||docHeight<headerHight;
   var startScroll = window.pageYOffset > 0;
 
   if (SHOW) {
@@ -198,8 +199,8 @@ const scrollHandle = function (event) {
   siteBrand.toggleClass('affix', startScroll);
   //如果滚动高度超过整个页面的头部，那就显示底部区域，否则隐藏(实际上元素只是看不见而已，东西还是在原地的)
   // sideBar.toggleClass('affix', window.pageYOffset > headerHight && document.body.offsetWidth > 991);
-  //所以不清楚具体用来处理啥，但是在我这儿确实有问题，改一下减小该值判断
-  sideBar.toggleClass('affix', window.pageYOffset > headerHightInner && document.body.offsetWidth > 991);
+  //所以不清楚具体用来处理啥，单纯 window.pageYOffset > headerHight 判断可能导致底部最近评论闪烁问题
+  sideBar.toggleClass('affix', (window.pageYOffset > headerHight ||docHeight<headerHight)&& document.body.offsetWidth > 991);
 
   if (typeof scrollAction.y == 'undefined') {
     scrollAction.y = window.pageYOffset;
@@ -228,7 +229,9 @@ const scrollHandle = function (event) {
   //scrollAction.x = Container.scrollLeft;
   scrollAction.y = window.pageYOffset;
 
-  var scrollPercent = Math.round(Math.min(100 * window.pageYOffset / contentVisibilityHeight, 100)) + '%';
+  // var scrollPercent = Math.round(Math.min(100 * window.pageYOffset / contentVisibilityHeight, 100)) + '%';
+  //上面的计算方式感觉对不上，这个改着试试
+  var scrollPercent = Math.round(Math.min(100*window.pageYOffset/(contentVisibilityHeight)))+"%";
   backToTop.child('span').innerText = scrollPercent;
   $('.percent').width(scrollPercent);
 }

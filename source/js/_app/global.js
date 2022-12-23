@@ -200,7 +200,7 @@ const scrollHandle = function (event) {
   //如果滚动高度超过整个页面的头部，那就显示底部区域，否则隐藏(实际上元素只是看不见而已，东西还是在原地的)
   // sideBar.toggleClass('affix', window.pageYOffset > headerHight && document.body.offsetWidth > 991);
   //所以不清楚具体用来处理啥，单纯 window.pageYOffset > headerHight 判断可能导致底部最近评论闪烁问题
-  sideBar.toggleClass('affix', (window.pageYOffset > headerHight ||docHeight<headerHight)&& document.body.offsetWidth > 991);
+  sideBar.toggleClass('affix', (window.pageYOffset > headerHight ||(docHeight<headerHight&&window.pageYOffset>docHeight/2))&& document.body.offsetWidth > 991);
 
   if (typeof scrollAction.y == 'undefined') {
     scrollAction.y = window.pageYOffset;

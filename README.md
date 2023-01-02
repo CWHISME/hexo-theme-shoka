@@ -1,5 +1,33 @@
 # Hexo Theme Shoka
 
+***
+
+基于原主题修改：
+
+1. 增加随机文章及最近评论数量的配置
+  ```yml
+  widgets:
+    # if true, will show random posts
+    random_posts: true
+    # if true, will show recent comments
+    recent_comments: true
+    count: 3
+  ```
+2. 增加自定义脚本配置
+```yml
+# Custom Script Path
+customJs:
+  - /js/DateTimeAfeterCalc.js
+```
+3. 对随机图片做限制，避免同一页出现反复随机出同一张图片
+
+其它问题修改：
+
+* ~~修改当页面内容过少，出现滑动底部一闪一闪的问题~~
+* 修改页面进度百分比显示不准确问题
+
+***
+
 ## Usage
 
 1. Clone this repository

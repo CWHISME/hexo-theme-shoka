@@ -28,7 +28,8 @@ const randomBG = function(count = 1, image_server = null, image_list = []) {
     if (img.startsWith('//') || img.startsWith('http')) {
       return img
     } else {
-      return 'https://tva'+randomServer+'.sinaimg.cn/'+size+'/'+img
+      // return 'https://tva'+randomServer+'.sinaimg.cn/'+size+'/'+img
+      return '/images/coverimages/'+size+'/'+img;
     }
   }
 
@@ -118,6 +119,7 @@ hexo.extend.helper.register('_image_url', function(img, path = '') {
   }
 })
 
+var cacheList=[];
 hexo.extend.helper.register('_cover', function(item, num) {
   const { statics, js, image_server, image_list } = hexo.theme.config;
 
@@ -126,7 +128,21 @@ hexo.extend.helper.register('_cover', function(item, num) {
   } else if (item.photos && item.photos.length > 0) {
     return this._image_url(item.photos[0], item.path)
   } else {
-    return randomBG(num || 1, image_server, image_list);
+    let bg=randomBG(num || 1, image_server, image_list);
+    //总图片数量大于10，并且是文章图片才判断是否重复，num>1 表示页面头部图片吧，那个就不用处理了
+    if(image_list.length>10&&(num==undefined||num==1))
+    {
+      //图片列表走过最低页数随机后，也就是基本上全部走过一轮才允许重复随机
+      let maxCheckNum=Math.floor(image_list.length/10);//Math.min(30,image_list.length);
+      if(cacheList.length>=maxCheckNum){
+        cacheList.length=0;
+      }
+      while(cacheList.indexOf(bg)!=-1){
+        bg=randomBG(num || 1, image_server, image_list);
+      }
+      cacheList.push(bg);
+    }
+    return bg;
   }
 
 })

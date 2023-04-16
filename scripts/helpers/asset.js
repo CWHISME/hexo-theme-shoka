@@ -54,11 +54,19 @@ hexo.extend.helper.register('_vendor_js', () => {
 
   vendorJs = vendorJs.filter(item => item !== '');
   vendorJs = [...new Set(vendorJs)];
-  vendorJs = vendorJs.join(',');
+  //合并操作======
+  // vendorJs = vendorJs.join(',');
 
-  let result = vendorJs ? `<script src="//cdn.jsdelivr.net/combine/${vendorJs}"></script>` : '';
+  // let result = vendorJs ? `<script src="//cdn.jsdelivr.net/combine/${vendorJs}"></script>` : '';
 
-  return vendorJs ? htmlTag('script', { src: `//cdn.jsdelivr.net/combine/${vendorJs}` }, '') : '';
+  // return vendorJs ? htmlTag('script', { src: `//cdn.jsdelivr.net/combine/${vendorJs}` }, '') : '';
+
+  let str='';
+  for(let i in vendorJs)
+  {
+    str+= htmlTag('script', { src:  vendorJs[i] },'');
+  }
+  return str;
 });
 
 hexo.extend.helper.register('_custom_js', () => {

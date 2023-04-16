@@ -294,14 +294,14 @@ vendors:
     comment: css/comment.css
     fancybox: combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css
   js:
-    pace: npm/pace-js@1.0.2/pace.min.js
-    pjax: npm/pjax@0.2.8/pjax.min.js
-    fetch: npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js
-    anime: npm/animejs@3.2.0/lib/anime.min.js
-    algolia: npm/algoliasearch@4/dist/algoliasearch-lite.umd.js
-    instantsearch: npm/instantsearch.js@4/dist/instantsearch.production.min.js
-    lazyload: npm/lozad@1/dist/lozad.min.js
-    quicklink: npm/quicklink@2/dist/quicklink.umd.js
+    pace: https://cdn.staticfile.org/pace/1.2.4/pace.min.js
+    pjax: https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js
+    fetch: https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js
+    anime: https://cdn.staticfile.org/animejs/3.2.1/anime.min.js
+    algolia: https://cdn.staticfile.org/algoliasearch/4.17.0/algoliasearch-lite.umd.js
+    instantsearch: https://cdn.staticfile.org/instantsearch.js/4.54.1/instantsearch.production.min.js
+    lazyload: https://cdn.staticfile.org/lozad.js/1.16.0/lozad.min.js
+    quicklink: https://cdn.staticfile.org/quicklink/2.3.0/quicklink.umd.js
     fancybox: combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js,npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js
     valine: gh/amehime/MiniValine@4.2.2-beta10/dist/MiniValine.min.js
     copy_tex: npm/katex@0.12.0/dist/contrib/copy-tex.min.js

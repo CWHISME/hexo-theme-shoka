@@ -20,6 +20,10 @@ customJs:
   - /js/DateTimeAfeterCalc.js
 ```
 3. 对随机图片做限制，避免同一页出现反复随机出同一张图片
+4. CDN 换成国内的 staticfile 提供的 CDN(JSdeliver合并的版本感觉太慢了)
+5. 主页 `cover` 展示图片以标签为准进行展示(而不是原来的分类)
+
+config 增加了 nickname 配置
 
 其它问题修改：
 

@@ -76,7 +76,7 @@ hexo.extend.helper.register('_custom_js', () => {
   let str='';
   for(let i in customJs)
   {
-    str+= htmlTag('script', { src:  customJs[i] },'');
+    str+= htmlTag('script', { src:  customJs[i],async: true },'');
   }
   return str;
 });

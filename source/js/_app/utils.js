@@ -35,9 +35,10 @@ const assetUrl = function(asset, type) {
 }
 
 const vendorJs = function(type, callback, condition) {
-  if(LOCAL[type]) {
-    getScript(assetUrl("js", type), callback || function(){
+  if(LOCAL[type]&&!window[type]) {
+    getScript(assetUrl("js", type), function(){
       window[type] = true;
+      callback();
     }, condition || window[type]);
   }
 }

@@ -22,7 +22,14 @@ customJs:
 3. 对随机图片做限制，避免同一页出现反复随机出同一张图片
 4. CDN 换成国内的 staticfile 提供的 CDN(JSdeliver合并的版本感觉太慢了/现在经常访问不了了)
 5. 主页 `cover` 展示图片以标签为准进行展示(而不是原来的分类)
-6. 参考 [lavenderdh](https://www.lavenderdh.cn/posts/3928966287/) 把页顶图片放大至全屏了
+6. 参考 [lavenderdh文章](https://www.lavenderdh.cn/posts/3928966287/) 把页顶图片放大至全屏了
+7. 参考 [lavenderdh文章](https://www.lavenderdh.cn/posts/3265173701/) 以及 [eurkon文章](https://blog.eurkon.com/post/1213ef82.html) 增加文章统计支持功能
+```yml
+# statistics 文章统计功能
+postStatistics:
+  beginDate: 2015-12 #开始统计日期
+  tagCount: 10 #统计标签个数
+```
 
 注意：还移除了一些用不上的插件(或者说兼容性东西，如polyfill)，以进行瘦身
 

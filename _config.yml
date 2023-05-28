@@ -169,6 +169,10 @@ tagcloud:
   end: "#ffbac3" # End color (hex, rgba, hsla or color keywords)
   amount: 200 # Amount of tags, change it if you have more than 200 tags
 
+# statistics 文章统计功能
+postStatistics:
+  beginDate: 2015-12 #开始统计日期
+  tagCount: 10 #统计标签个数
 
 # ---------------------------------------------------------------
 # Third Party Plugins & Services Settings
@@ -310,4 +314,5 @@ vendors:
     #jquery: https://cdn.staticfile.org/jquery/3.7.0/jquery.min.js # 为了支持fancybox、justifiedGallery
     valine: gh/amehime/MiniValine@4.2.2-beta10/dist/MiniValine.min.js
     copy_tex: npm/katex@0.12.0/dist/contrib/copy-tex.min.js
-    chart: npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js
+    chart: https://cdn.bootcdn.net/ajax/libs/frappe-charts/1.5.0/frappe-charts.min.iife.min.js #npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js
+    echart: https://cdn.staticfile.org/echarts/5.4.2/echarts.min.js

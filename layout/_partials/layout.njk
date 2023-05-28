@@ -115,7 +115,7 @@
     {%- if page.mermaid %}mermaid: true,{%- endif %}
     {%- if page.audio %}audio: {{ page.audio|safedump }},{%- endif %}
     {%- if page.audio === false %}audio: {},{%- endif %}
-    {%- if page.fancybox !== false %}fancybox: true,{%- endif %}
+    {%- if page.fancybox !== false %}fancybox: true,justifiedGallery:true,jquery:true,{%- endif %}
     {%- if page.copyright !== false %}
     {%- if page.copyright === true %}nocopy: true,
     copyright: '{{ __("tips.nocopy")}}',{%- else %}

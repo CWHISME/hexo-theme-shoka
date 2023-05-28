@@ -7,9 +7,9 @@ const getDocHeight = function () {
 }
 
 const getScript = function(url, callback, condition) {
-  if (condition) {
-    callback();
-  } else {
+  // if (condition) {
+  //   callback();
+  // } else {
     var script = document.createElement('script');
     script.onload = script.onreadystatechange = function(_, isAbort) {
       if (isAbort || !script.readyState || /loaded|complete/.test(script.readyState)) {
@@ -20,13 +20,13 @@ const getScript = function(url, callback, condition) {
     };
     script.src = url;
     document.head.appendChild(script);
-  }
+  // }
 }
 
 const assetUrl = function(asset, type) {
   var str = CONFIG[asset][type]
   if(str.indexOf('npm')>-1||str.indexOf('gh')>-1||str.indexOf('combine')>-1)
-    return "//cdn.jsdelivr.net/" + str
+    return "//fastly.jsdelivr.net/" + str
 
   if(str.indexOf('http')>-1)
     return str

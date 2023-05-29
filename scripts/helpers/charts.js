@@ -5,14 +5,21 @@ const moment = require('moment')
 
 hexo.extend.filter.register('after_render:html', function (locals) {
   const $ = cheerio.load(locals)
+  const init = $('#echarts-init')
+  let htmlEncode = false
+  //无初始化，跳过
+  if (init.length > 0 ) {
+    if($('#echartsInit').length === 0){
+      if (init.attr('data-encode') === 'true') htmlEncode = true
+      init.after(echartsInit())
+    }
+  }else return locals;
+
   const calendar = $('#posts-calendar')
   const post = $('#posts-chart')
   const tag = $('#tags-chart')
   const category = $('#categories-chart')
-  const init = $('#echarts-init')
-  let htmlEncode = false
-
-  if (calendar.length > 0 || post.length > 0 || tag.length > 0 || category.length > 0||echartsInit.length>0) {
+  if (calendar.length > 0 || post.length > 0 || tag.length > 0 || category.length > 0) {
     if (calendar.length > 0 && $('#postsCalendar').length === 0) {
       if (calendar.attr('data-encode') === 'true') htmlEncode = true
       calendar.after(postsCalendar())
@@ -28,10 +35,6 @@ hexo.extend.filter.register('after_render:html', function (locals) {
     if (category.length > 0 && $('#categoriesChart').length === 0) {
       if (category.attr('data-encode') === 'true') htmlEncode = true
       category.after(categoriesChart())
-    }
-    if (init.length > 0 && $('#echartsInit').length === 0) {
-      if (init.attr('data-encode') === 'true') htmlEncode = true
-      init.after(echartsInit())
     }
     if (htmlEncode) {
       return $.root().html().replace(/&amp;#/g, '&#')
@@ -385,9 +388,6 @@ function tagsChart (len) {
             color: color
           }
         },
-        axisLabel:{
-          interval:0,
-        },
         data: ${tagNameArrJson}
       },
       yAxis: {
@@ -475,7 +475,7 @@ function categoriesChart () {
         }
       },
       legend: {
-        top: 'bottom',
+        top: '85%',
         textStyle: {
           color: color
         }
@@ -487,8 +487,9 @@ function categoriesChart () {
       series: [{
         name: '文章篇数',
         type: 'pie',
-        radius: [30, 80],
-        //center: 'center',
+        radius: ['20%', '50%'],
+        // radius: [30, 80],
+        center: ['50%', '45%'],
         roseType: 'area',
         label: {
           formatter: "{b} : {c} ({d}%)"

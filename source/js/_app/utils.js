@@ -7,9 +7,9 @@ const getDocHeight = function () {
 }
 
 const getScript = function(url, callback, condition) {
-  // if (condition) {
-  //   callback();
-  // } else {
+  if (condition) {
+    callback();
+  } else {
     var script = document.createElement('script');
     script.onload = script.onreadystatechange = function(_, isAbort) {
       if (isAbort || !script.readyState || /loaded|complete/.test(script.readyState)) {
@@ -20,7 +20,7 @@ const getScript = function(url, callback, condition) {
     };
     script.src = url;
     document.head.appendChild(script);
-  // }
+  }
 }
 
 const assetUrl = function(asset, type) {
@@ -35,7 +35,7 @@ const assetUrl = function(asset, type) {
 }
 
 const vendorJs = function(type, callback, condition) {
-  if(LOCAL[type]&&!window[type]) {
+  if(LOCAL[type]) {
     getScript(assetUrl("js", type), function(){
       window[type] = true;
       callback();

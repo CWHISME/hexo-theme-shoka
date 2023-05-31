@@ -453,6 +453,13 @@ function tagsChart (len) {
 function categoriesChart () {
   const categoryArr = []
   hexo.locals.get('categories').map(function (category) {
+    for (let index = 0; index < categoryArr.length; index++) {
+      const element = categoryArr[index];
+      if(element.name==category.name){
+        element.value+=category.length;
+        return;
+      }
+    }
     categoryArr.push({ name: category.name, value: category.length })
   })
   categoryArr.sort((a, b) => { return b.value - a.value });

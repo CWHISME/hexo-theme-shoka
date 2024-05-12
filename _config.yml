@@ -304,7 +304,7 @@ vendors:
     pace: https://cdn.staticfile.org/pace/1.2.4/pace.min.js
     pjax: https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js
     #fetch: https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js # 见https://www.npmjs.com/package/whatwg-fetch说明，该接口是一个polyfill，魏建荣旧版浏览器用，因此直接移除
-    anime: https://cdn.staticfile.org/animejs/3.2.1/anime.min.js
+    anime: https://cdn.staticfile.net/animejs/3.2.2/anime.min.js
     algolia: https://cdn.staticfile.org/algoliasearch/4.17.0/algoliasearch-lite.umd.js
     instantsearch: https://cdn.staticfile.org/instantsearch.js/4.54.1/instantsearch.production.min.js
     lazyload: https://cdn.staticfile.org/lozad.js/1.16.0/lozad.min.js

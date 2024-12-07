@@ -301,18 +301,18 @@ vendors:
     #fancybox: https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css #combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css
     #justifiedGallery: https://cdn.staticfile.org/justifiedGallery/3.8.1/css/justifiedGallery.min.css #这个插件跟fancybox配合才能点击图片放大
   js:
-    pace: https://cdn.staticfile.org/pace/1.2.4/pace.min.js
-    pjax: https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js
+    pace: https://cdn.staticfile.net/pace/1.2.4/pace.min.js
+    pjax: https://cdn.staticfile.net/pjax/0.2.8/pjax.min.js
     #fetch: https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js # 见https://www.npmjs.com/package/whatwg-fetch说明，该接口是一个polyfill，魏建荣旧版浏览器用，因此直接移除
     anime: https://cdn.staticfile.net/animejs/3.2.2/anime.min.js
-    algolia: https://cdn.staticfile.org/algoliasearch/4.17.0/algoliasearch-lite.umd.js
-    instantsearch: https://cdn.staticfile.org/instantsearch.js/4.54.1/instantsearch.production.min.js
-    lazyload: https://cdn.staticfile.org/lozad.js/1.16.0/lozad.min.js
-    quicklink: https://cdn.staticfile.org/quicklink/2.3.0/quicklink.umd.js
+    algolia: https://cdn.staticfile.net/algoliasearch/4.17.0/algoliasearch-lite.umd.js
+    instantsearch: https://cdn.staticfile.net/instantsearch.js/4.54.1/instantsearch.production.min.js
+    lazyload: https://cdn.staticfile.net/lozad.js/1.16.0/lozad.min.js
+    quicklink: https://cdn.staticfile.net/quicklink/2.3.0/quicklink.umd.js
     #fancybox: https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js #//combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js,npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js
     #justifiedGallery: https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js
     #jquery: https://cdn.staticfile.org/jquery/3.7.0/jquery.min.js # 为了支持fancybox、justifiedGallery
     valine: gh/amehime/MiniValine@4.2.2-beta10/dist/MiniValine.min.js
     copy_tex: npm/katex@0.12.0/dist/contrib/copy-tex.min.js
     chart: https://cdn.bootcdn.net/ajax/libs/frappe-charts/1.5.0/frappe-charts.min.iife.min.js #npm/frappe-charts@1.5.0/dist/frappe-charts.min.iife.min.js
-    echart: https://cdn.staticfile.org/echarts/5.4.2/echarts.min.js
+    echart: https://cdn.staticfile.net/echarts/5.4.2/echarts.min.js

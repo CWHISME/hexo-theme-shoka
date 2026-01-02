@@ -137,6 +137,19 @@ const siteInit = function () {
   })
 
   siteRefresh(1)
+
+  // 确保在 DOM 完全加载后执行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        loadCustomDelayedJs().catch(console.error);
+      }, 1000); // 延迟1秒确保其他资源已加载
+    });
+  } else {
+    setTimeout(() => {
+      loadCustomDelayedJs().catch(console.error);
+    }, 1000);
+  }
 }
 
 window.addEventListener('DOMContentLoaded', siteInit);

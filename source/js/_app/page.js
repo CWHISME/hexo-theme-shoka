@@ -564,3 +564,95 @@ const loadComments = function () {
 //     }
 //   });
 // }
+
+// 全局变量跟踪 customDelayedJs 加载状态
+window.customDelayedJsLoaded = false;
+window.customDelayedJsQueue = [];
+
+/**
+ * 异步加载 customDelayedJs 文件
+ */
+const loadCustomDelayedJs = function() {
+  if (!Array.isArray(CONFIG.customDelayedJs) || CONFIG.customDelayedJs.length === 0) {
+    console.log('没有配置 customDelayedJs 文件');
+    return Promise.resolve();
+  }
+
+  // 如果已经加载过，直接返回
+  if (window.customDelayedJsLoaded) {
+    console.log('customDelayedJs 已加载，跳过');
+    return Promise.resolve();
+  }
+
+  console.log('开始异步加载 customDelayedJs 文件:', CONFIG.customDelayedJs);
+
+  const loadScript = (jsUrl) => {
+    return new Promise((resolve, reject) => {
+      // 检查是否已加载
+      if (window.customDelayedJsQueue.includes(jsUrl)) {
+        resolve(jsUrl);
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = jsUrl;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        console.log('✓ 已加载: ' + jsUrl);
+        window.customDelayedJsQueue.push(jsUrl);
+        resolve(jsUrl);
+      };
+      script.onerror = (error) => {
+        console.error('✗ 加载失败: ' + jsUrl, error);
+        reject(new Error('Failed to load script: ' + jsUrl));
+      };
+
+      // 添加到 body 底部
+      if (document.body) {
+        document.body.appendChild(script);
+      } else {
+        // 如果 body 还不存在，等待 DOM 加载完成
+        document.addEventListener('DOMContentLoaded', () => {
+          document.body.appendChild(script);
+        });
+      }
+    });
+  };
+
+  // 依次加载所有JS文件（保持顺序）
+  const loadSequentially = async (urls) => {
+    for (const url of urls) {
+      try {
+        await loadScript(url);
+        // 可以在每个文件加载后添加延迟
+        await new Promise(resolve => setTimeout(resolve, 100));
+      } catch (error) {
+        console.warn(`跳过加载失败的文件: ${url}`, error);
+      }
+    }
+  };
+
+  return loadSequentially(CONFIG.customDelayedJs)
+    .then(() => {
+      window.customDelayedJsLoaded = true;
+      console.log('✅ 所有 customDelayedJs 文件加载完成');
+
+      // 触发自定义事件
+      const event = new CustomEvent('customDelayedJsLoaded', {
+        detail: { files: window.customDelayedJsQueue }
+      });
+      window.dispatchEvent(event);
+
+      // 调用全局回调函数（如果存在）
+      if (typeof window.onCustomDelayedJsLoaded === 'function') {
+        window.onCustomDelayedJsLoaded(window.customDelayedJsQueue);
+      }
+
+      return window.customDelayedJsQueue;
+    })
+    .catch(error => {
+      console.error('❌ customDelayedJs 加载过程中出错:', error);
+      throw error;
+    });
+};

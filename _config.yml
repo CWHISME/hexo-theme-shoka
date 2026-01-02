@@ -285,9 +285,14 @@ baidu_site_verification:
 baidu_push: false
 
 # Custom Script Path
+# 这个直接写入页面，也就是页面下来立即就存在
 customJs:
-  - /js/DateTimeAfeterCalc.js
+  #- /js/DateTimeAfeterCalc.js
   #- /js/MiniValine.min.js
+
+# 这个等界面及渲染插件加载完毕后，才会执行下载
+customDelayedJs:
+  - /js/DateTimeAfeterCalc.js
 
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING `vendors` SETTINGS
